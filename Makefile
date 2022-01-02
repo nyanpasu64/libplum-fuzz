@@ -1,13 +1,12 @@
-CC ?= gcc
-OUTPUT ?= libplum.so
-OPTFLAGS = -march=native -mtune=native
+CC = clang
+OUTPUT ?= plum-fuzz
+OPTFLAGS =
 DEBUGFLAGS =
 
-CFLAGS = -Ofast -fomit-frame-pointer -fno-asynchronous-unwind-tables -fno-exceptions -Wl,-S -Wl,-x -Wl,--gc-sections \
-         $(OPTFLAGS)
+CFLAGS = -O1 -g -fsanitize=fuzzer $(OPTFLAGS)
 
 all: basefiles
-	$(CC) -shared -fPIC $(CFLAGS) build/libplum.c -o build/$(OUTPUT)
+	$(CC) -fPIC $(CFLAGS) build/libplum.c -o build/$(OUTPUT)
 
 clean:
 	rm -rf build
