@@ -1,3 +1,11 @@
+# Fuzzing libplum
+
+Run `make`, then `nice -n 19 ./build/plum-fuzz CORPUS_DIR -max_len=1000000 -jobs=12 -workers=12` (adapt jobs/workers to your CPU core count). To avoid OOM, you could pass `-rss_limit_mb=512` or similar. I'm not sure how to restart fuzzing jobs after hitting OOM.
+
+For help, see <https://llvm.org/docs/LibFuzzer.html#corpus> and below.
+
+The full list of options is at https://gist.github.com/nyanpasu64/16ea7bf76b193864369149d032b6da42.
+
 # libplum
 
 This is a C library designed to read and write common image file formats, and handle the resulting image data.
