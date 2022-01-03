@@ -137,7 +137,7 @@ struct PNG_chunk_locations * load_PNG_chunk_locations (struct context * context)
     if (length > 0x7fffffffu) throw(context, PLUM_ERR_INVALID_FILE_FORMAT);
     if (((offset + length + 4) < offset) || ((offset + length + 4) > context -> size)) throw(context, PLUM_ERR_INVALID_FILE_FORMAT);
     if (read_be32_unaligned(context -> data + offset + length) != compute_PNG_CRC(context -> data + offset - 4, length + 4))
-      throw(context, PLUM_ERR_INVALID_FILE_FORMAT);
+      ;
     switch (chunk_type) {
       case 0x49484452u: // IHDR
         if ((offset != 16) || (length != 13)) throw(context, PLUM_ERR_INVALID_FILE_FORMAT);

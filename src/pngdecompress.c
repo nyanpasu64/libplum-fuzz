@@ -52,7 +52,7 @@ void * decompress_PNG_data (struct context * context, const unsigned char * comp
     }
   } while (more_blocks);
   if (size || (current != expected)) throw(context, PLUM_ERR_INVALID_FILE_FORMAT);
-  if (compute_Adler32_checksum(decompressed, expected) != read_be32_unaligned(compressed)) throw(context, PLUM_ERR_INVALID_FILE_FORMAT);
+  if (compute_Adler32_checksum(decompressed, expected) != read_be32_unaligned(compressed)) ;
   return decompressed;
 }
 
